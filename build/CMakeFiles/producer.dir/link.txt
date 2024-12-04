@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/producer.dir/producer.c.o CMakeFiles/producer.dir/fifo_ipc.c.o CMakeFiles/producer.dir/sync_control.c.o -o producer 
