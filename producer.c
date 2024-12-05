@@ -9,7 +9,6 @@
 #include <time.h>
 
 int fifo_fd;  // Biến toàn cục lưu descriptor của FIFO
-struct timespec start_time; // Biến lưu thời gian bắt đầu
 
 void send_message(const char* message) {
     // Ghi lại thời gian bắt đầu gửi tin nhắn
@@ -43,14 +42,15 @@ int main() {
         char message[100];
         snprintf(message, sizeof(message), "%s\n", messages[i]);  // Thêm ký tự xuống dòng sau mỗi thông điệp
         printf("Producer: Writing %s to FIFO\n", message);
-        
-        send_message(message);
-        printf("Producer: Data written to FIFO\n");
         signal_sync();  // Báo hiệu cho Consumer rằng có dữ liệu mới
 
-        sleep(3);  // Chờ trước khi gửi tin nhắn tiếp theo
-    }
+        send_message(message);
+        printf("Producer: Data written to FIFO\n");
 
+        sleep(2);  // Chờ trước khi gửi tin nhắn tiếp theo
+    }
+    // Gửi tin nhắn kết thúc
+    
     close(fifo_fd);
     cleanup_sync();  // Dọn dẹp semaphore
     return 0;

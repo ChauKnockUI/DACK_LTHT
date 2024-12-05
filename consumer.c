@@ -34,6 +34,7 @@ void receive_message(const char *message) {
         // Ghi vào file log (được đồng bộ bằng mutex)
         pthread_mutex_lock(&log_mutex);
         FILE* log_file = fopen("performance_log.txt", "a");
+        
         if (log_file != NULL) {
             fprintf(log_file, "Message %d: %s\n", message_count, content);
             fprintf(log_file, "Transmission Time: %.6f seconds\n", transmission_time);
@@ -47,6 +48,7 @@ void receive_message(const char *message) {
 
 // Hàm ghi log thời gian trung bình
 void log_average_time() {
+    printf("Logging average time...\n");
     if (message_count > 0) {
         double average_time = total_time / message_count;
 
@@ -58,8 +60,11 @@ void log_average_time() {
             fclose(log_file);
         }
         pthread_mutex_unlock(&log_mutex);
+    } else {
+        printf("No messages to log average time\n");
     }
 }
+
 
 // Hàm main
 int main() {
@@ -77,6 +82,7 @@ int main() {
     char buffer[256];
     while (1) {
         wait_sync();  // Chờ tín hiệu từ Producer
+        printf("Consumer: Wait completed\n");  // Thêm thông báo debug
 
         int bytes_read = read(fifo_fd, buffer, sizeof(buffer) - 1);
         if (bytes_read > 0) {
@@ -91,7 +97,7 @@ int main() {
             break;
         }
     }
-
+    printf("Consumer: Calling log_average_time()\n");
     log_average_time();
     close(fifo_fd);
     cleanup_sync();  // Dọn dẹp semaphore
