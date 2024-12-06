@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <pthread.h>
 #include <string.h>
 #include "fifo_ipc.h"
 #include "sync_control.h"  // Thêm đồng bộ semaphore
@@ -10,26 +9,44 @@
 
 int fifo_fd;  // Biến toàn cục lưu descriptor của FIFO
 
-void send_message(const char* message) {
-    // Ghi lại thời gian bắt đầu gửi tin nhắn
-    struct timespec start_time;
-    clock_gettime(CLOCK_MONOTONIC, &start_time);
-
-    // Gửi tin nhắn qua FIFO với thời gian
-    char message_with_time[256];
-    snprintf(message_with_time, sizeof(message_with_time), "%ld.%ld|%s", 
-             start_time.tv_sec, start_time.tv_nsec, message);
-    write(fifo_fd, message_with_time, strlen(message_with_time) + 1);
+void send_message(const char *message) {
+    write(fifo_fd, message, strlen(message) + 1);
 }
+
+void send_file(const char *file_path) {
+    FILE *file = fopen(file_path, "rb");
+    if (!file) {
+        perror("Failed to open file");
+        return;
+    }
+    printf("Producer: Sending file -> %s\n", file_path);
+
+    char buffer[256];
+    size_t bytes_read;
+    while ((bytes_read = fread(buffer, 1, sizeof(buffer), file)) > 0) {
+        write(fifo_fd, buffer, bytes_read);
+        printf("Producer: Sent %zu bytes\n", bytes_read);
+    }
+    fclose(file);
+    printf("Producer: Finished sending file -> %s\n", file_path);
+
+    // Gửi một thông báo kết thúc file (cờ EOF)
+    const char *eof_marker = "EOF";
+    write(fifo_fd, eof_marker, strlen(eof_marker) + 1);
+    printf("Producer: Sent EOF marker\n");
+}
+
 
 
 int main() {
     const char *fifo_name = "/tmp/my_fifo";
-    const char *messages[] = {"Message 1", "Message 2", "Message 3", "Message 4", "Message 5"};
-    
-    init_sync();  // Khởi tạo semaphore
+    const char *messages[] = {
+        "TEXT|Hello, this is a text message!",
+        "INT|42",
+        "FLOAT|3.14"
+    };
 
-    // Tạo FIFO nếu chưa tồn tại
+    init_sync();  // Khởi tạo semaphore
     create_fifo(fifo_name);
 
     fifo_fd = open(fifo_name, O_WRONLY);
@@ -38,20 +55,23 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
-    for (int i = 0; i < 5; i++) {
-        char message[100];
-        snprintf(message, sizeof(message), "%s\n", messages[i]);  // Thêm ký tự xuống dòng sau mỗi thông điệp
-        printf("Producer: Writing %s to FIFO\n", message);
-        signal_sync();  // Báo hiệu cho Consumer rằng có dữ liệu mới
-
-        send_message(message);
-        printf("Producer: Data written to FIFO\n");
-
-        sleep(2);  // Chờ trước khi gửi tin nhắn tiếp theo
+    for (int i = 0; i < 3; i++) {
+        send_message(messages[i]);
+        signal_sync();  // Báo hiệu Consumer xử lý
+        printf("Producer: Sent message and signaled Consumer\n");
+        sleep(2);
     }
-    // Gửi tin nhắn kết thúc
-    
+
+    // Gửi một file
+    send_file("/home/chauzz/Desktop/DACK/example.txt");
+        printf("Producer: Send file and signaled Consumer\n");
+
+    // Gửi tín hiệu kết thúc
+    send_message("END");
+    signal_sync();  // Đảm bảo Consumer nhận tín hiệu END
+
     close(fifo_fd);
     cleanup_sync();  // Dọn dẹp semaphore
     return 0;
 }
+

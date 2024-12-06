@@ -1,4 +1,4 @@
-CMakeFiles/consumer.dir/sync_control.c.o: \
+CMakeFiles/consumer.dir/sync_control.o: \
  /home/chauzz/Desktop/DACK/sync_control.c /usr/include/stdc-predef.h \
  /usr/include/semaphore.h /usr/include/features.h \
  /usr/include/features-time64.h \

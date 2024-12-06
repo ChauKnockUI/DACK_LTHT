@@ -1,11 +1,10 @@
-#include <pthread.h>
 #include <semaphore.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+// Xóa mutex vì không sử dụng
 sem_t *sem;
 
 void init_sync() {
@@ -17,14 +16,26 @@ void init_sync() {
 }
 
 void wait_sync() {
-    sem_wait(sem);  // Đợi tín hiệu từ Producer
+    if (sem_wait(sem) == -1) {  // Đợi tín hiệu từ Producer
+        perror("Error waiting for semaphore");
+        exit(EXIT_FAILURE);
+    }
 }
 
 void signal_sync() {
-    sem_post(sem);  // Gửi tín hiệu cho Consumer
+    if (sem_post(sem) == -1) {  // Gửi tín hiệu cho Consumer
+        perror("Error signaling semaphore");
+        exit(EXIT_FAILURE);
+    }
 }
 
 void cleanup_sync() {
-    sem_close(sem);  // Đóng semaphore
-    sem_unlink("/my_sem");  // Xóa semaphore khỏi hệ thống
+    if (sem_close(sem) == -1) {  // Đóng semaphore
+        perror("Error closing semaphore");
+        exit(EXIT_FAILURE);
+    }
+    if (sem_unlink("/my_sem") == -1) {  // Xóa semaphore khỏi hệ thống
+        perror("Error unlinking semaphore");
+        exit(EXIT_FAILURE);
+    }
 }

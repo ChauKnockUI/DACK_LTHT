@@ -1,6 +1,5 @@
-CMakeFiles/consumer.dir/consumer.c.o: \
- /home/chauzz/Desktop/DACK/consumer.c /usr/include/stdc-predef.h \
- /usr/include/stdio.h \
+CMakeFiles/producer.dir/producer.o: /home/chauzz/Desktop/DACK/producer.c \
+ /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
