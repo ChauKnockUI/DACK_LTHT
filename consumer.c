@@ -26,6 +26,7 @@ void handle_file_data(const char *data) {
         perror("Failed to open file for writing");
         return;
     }
+   // printf("Received File: %s\n",data);
     fwrite(data, 1, strlen(data), file);
     fclose(file);
 }

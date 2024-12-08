@@ -24,17 +24,26 @@ void send_file(const char *file_path) {
     char buffer[256];
     size_t bytes_read;
     while ((bytes_read = fread(buffer, 1, sizeof(buffer), file)) > 0) {
-        write(fifo_fd, buffer, bytes_read);
+        ssize_t bytes_written = write(fifo_fd, buffer, bytes_read);
+        if (bytes_written == -1) {
+            perror("Error writing to FIFO");
+            fclose(file);
+            return;
+        }
+        signal_sync();  // Gửi tín hiệu tới Consumer
         printf("Producer: Sent %zu bytes\n", bytes_read);
     }
     fclose(file);
-    printf("Producer: Finished sending file -> %s\n", file_path);
 
-    // Gửi một thông báo kết thúc file (cờ EOF)
+    // Gửi cờ EOF riêng biệt
     const char *eof_marker = "EOF";
     write(fifo_fd, eof_marker, strlen(eof_marker) + 1);
+    signal_sync();  // Gửi tín hiệu tới Consumer
     printf("Producer: Sent EOF marker\n");
 }
+
+
+
 
 
 
