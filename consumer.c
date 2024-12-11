@@ -21,7 +21,7 @@ void handle_float(float value) {
 }
 
 void handle_file_data(const char *data) {
-    FILE *file = fopen("/home/chauzz/Desktop/DACK/received_file.txt", "a");
+    FILE *file = fopen("/home/trnghuy-bru/Desktop/DACK_LTHT/received_file.txt", "a");
     if (!file) {
         perror("Failed to open file for writing");
         return;
@@ -69,12 +69,14 @@ int main() {
     char buffer[1024];
     while (1) {
         printf("Consumer: Waiting for signal from Producer\n");
-
-        wait_sync();  // Chờ tín hiệu từ Producer
+        signal_ack();
+        wait_sync();
+          // Chờ tín hiệu từ Producer
         int bytes_read = read(fifo_fd, buffer, sizeof(buffer) - 1);
         if (bytes_read > 0) {
             buffer[bytes_read] = '\0';  // Đảm bảo kết thúc chuỗi
             process_message(buffer);
+            signal_ack(); 
         } else if (bytes_read == 0) {
             printf("No more data to read. Exiting...\n");
             break;

@@ -11,6 +11,7 @@ int fifo_fd;  // Biến toàn cục lưu descriptor của FIFO
 
 void send_message(const char *message) {
     write(fifo_fd, message, strlen(message) + 1);
+    wait_ack(); 
 }
 
 void send_file(const char *file_path) {
@@ -31,6 +32,7 @@ void send_file(const char *file_path) {
             return;
         }
         signal_sync();  // Gửi tín hiệu tới Consumer
+        wait_ack();   // Chờ tín hiệu ACK từ Consumer
         printf("Producer: Sent %zu bytes\n", bytes_read);
     }
     fclose(file);
@@ -39,6 +41,7 @@ void send_file(const char *file_path) {
     const char *eof_marker = "EOF";
     write(fifo_fd, eof_marker, strlen(eof_marker) + 1);
     signal_sync();  // Gửi tín hiệu tới Consumer
+    wait_ack(); 
     printf("Producer: Sent EOF marker\n");
 }
 
@@ -72,12 +75,13 @@ int main() {
     }
 
     // Gửi một file
-    send_file("/home/chauzz/Desktop/DACK/example.txt");
+    send_file("/home/trnghuy-bru/Desktop/DACK_LTHT/example.txt");
         printf("Producer: Send file and signaled Consumer\n");
 
     // Gửi tín hiệu kết thúc
     send_message("END");
-    signal_sync();  // Đảm bảo Consumer nhận tín hiệu END
+    signal_sync();
+    wait_ack() ; // Đảm bảo Consumer nhận tín hiệu END
 
     close(fifo_fd);
     cleanup_sync();  // Dọn dẹp semaphore

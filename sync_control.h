@@ -20,4 +20,7 @@ void signal_sync();
 // Hàm dọn dẹp đồng bộ
 void cleanup_sync();
 
+void wait_ack();         // Producer đợi ACK từ Consumer
+void signal_ack();  
+
 #endif // SYNC_CONTROL_H
