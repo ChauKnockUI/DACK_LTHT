@@ -1,7 +1,7 @@
 CMakeFiles/producer.dir/sync_control.c.o: \
- /home/chauzz/Desktop/DACK/sync_control.c /usr/include/stdc-predef.h \
- /usr/include/semaphore.h /usr/include/features.h \
- /usr/include/features-time64.h \
+ /home/trnghuy-bru/Desktop/DACK_LTHT/sync_control.c \
+ /usr/include/stdc-predef.h /usr/include/semaphore.h \
+ /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/bits/timesize.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -59,4 +59,7 @@ CMakeFiles/producer.dir/sync_control.c.o: \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib-float.h
+ /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/errno.h \
+ /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
+ /usr/include/x86_64-linux-gnu/asm/errno.h \
+ /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h
