@@ -1,6 +1,6 @@
 CMakeFiles/consumer.dir/statistics.c.o: \
- /home/chauzz/Desktop/DACK/statistics.c /usr/include/stdc-predef.h \
- /usr/include/stdio.h \
+ /home/trnghuy-bru/Desktop/DACK_LTHT/statistics.c \
+ /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \

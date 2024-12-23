@@ -1,6 +1,6 @@
 CMakeFiles/producer.dir/fifo_ipc.c.o: \
- /home/chauzz/Desktop/DACK/fifo_ipc.c /usr/include/stdc-predef.h \
- /usr/include/stdio.h \
+ /home/trnghuy-bru/Desktop/DACK_LTHT/fifo_ipc.c \
+ /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \

@@ -29,7 +29,7 @@ void handle_float(float value) {
 }
 
 void handle_file_data(const char *data) {
-    FILE *file = fopen("/home/chauzz/Desktop/DACK/received_file.txt", "a");
+    FILE *file = fopen("/home/trnghuy-bru/Desktop/DACK_LTHT/received_file.txt", "a");
     if (!file) {
         perror("Failed to open file for writing");
         return;
@@ -37,7 +37,7 @@ void handle_file_data(const char *data) {
     printf("Received File\n");
     fwrite(data, 1, strlen(data), file);
     fclose(file);
-    log_message("/home/chauzz/Desktop/DACK/received_file.txt", "RECEIVED");
+    log_message("/home/trnghuy-bru/Desktop/DACK_LTHT/received_file.txt", "RECEIVED");
 }
 
 void process_message(const char *message) {
@@ -54,15 +54,17 @@ void process_message(const char *message) {
     } else if (strncmp(message, "EOF", 3) == 0) {
         // Nếu nhận được EOF, dừng quá trình nhận file
         printf("Received EOF marker. Finished receiving file data.\n");
+        signal_sync();
         return;  // Dừng nhận file
     } else if (strcmp(message, "END") == 0) {
         // Nếu nhận được END, dừng consumer
         printf("Received END signal. Exiting...\n");
+        cleanup_sync(); // Dọn dẹp semaphore
+        close(fifo_fd); // Đóng FIFO
         exit(0);  // Thoát khỏi vòng lặp và kết thúc chương trình
     }
+    signal_sync();
 }
-
-
 
 int main() {
     const char *fifo_name = "/tmp/my_fifo";
@@ -78,14 +80,14 @@ int main() {
     char buffer[1024];
     while (1) {
         printf("Consumer: Waiting for signal from Producer\n");
-        signal_ack();
-        wait_sync();
-          // Chờ tín hiệu từ Producer
+
         int bytes_read = read(fifo_fd, buffer, sizeof(buffer) - 1);
         if (bytes_read > 0) {
             buffer[bytes_read] = '\0';  // Đảm bảo kết thúc chuỗi
             process_message(buffer);
-            signal_ack(); 
+
+           // signal_sync();// gui ack
+     //       signal_ack(); 
         } else if (bytes_read == 0) {
             printf("No more data to read. Exiting...\n");
             break;

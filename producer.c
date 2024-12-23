@@ -13,7 +13,7 @@ int fifo_fd;
 void send_message(const char *message) {
     double start_time = get_current_time();
     write(fifo_fd, message, strlen(message) + 1);
-    wait_ack();
+    wait_sync();
     double end_time = get_current_time();
     record_message_timing("TEXT", end_time - start_time);
     log_message(message, "SENT");
@@ -31,21 +31,22 @@ void send_file(const char *file_path) {
     size_t bytes_read;
     while ((bytes_read = fread(buffer, 1, sizeof(buffer), file)) > 0) {
         ssize_t bytes_written = write(fifo_fd, buffer, bytes_read);
+        wait_sync();
         if (bytes_written == -1) {
             perror("Error writing to FIFO");
             fclose(file);
             return;
         }
-        signal_sync();
-        wait_ack();
+        // signal_sync();
+        // doi ack
         printf("Producer: Sent %zu bytes\n", bytes_read);
+        
     }
     fclose(file);
 
     const char *eof_marker = "EOF";
     write(fifo_fd, eof_marker, strlen(eof_marker) + 1);
-    signal_sync();
-    wait_ack();
+    wait_sync(); //
     printf("Producer: Sent EOF marker\n");
 }
 
@@ -60,7 +61,7 @@ void send_text_message() {
     snprintf(formatted_message, sizeof(formatted_message), "TEXT|%s", text);
     
     send_message(formatted_message);
-    signal_sync();
+    // doi ack
     printf("Producer: Sent text message and signaled Consumer\n");
 }
 
@@ -76,7 +77,7 @@ void send_integer_message() {
     snprintf(formatted_message, sizeof(formatted_message), "INT|%d", number);
     
     send_message(formatted_message);
-    signal_sync();
+    
     printf("Producer: Sent integer message and signaled Consumer\n");
 }
 
@@ -92,7 +93,7 @@ void send_float_message() {
     snprintf(formatted_message, sizeof(formatted_message), "FLOAT|%f", number);
     
     send_message(formatted_message);
-    signal_sync();
+    
     printf("Producer: Sent float message and signaled Consumer\n");
 }
 
@@ -152,8 +153,6 @@ int main() {
             case 5:
                 printf("Sending END signal to consumer...\n");
                 send_message("END");
-                signal_sync();
-                wait_ack();
                 print_statistics();
                 break;
             default:
