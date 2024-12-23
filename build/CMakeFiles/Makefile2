@@ -83,12 +83,12 @@ clean: CMakeFiles/consumer.dir/clean
 CMakeFiles/producer.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/producer.dir/build.make CMakeFiles/producer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/producer.dir/build.make CMakeFiles/producer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/chauzz/Desktop/DACK/build/CMakeFiles --progress-num=5,6,7,8 "Built target producer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/chauzz/Desktop/DACK/build/CMakeFiles --progress-num=6,7,8,9,10 "Built target producer"
 .PHONY : CMakeFiles/producer.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/producer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/chauzz/Desktop/DACK/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/chauzz/Desktop/DACK/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/producer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/chauzz/Desktop/DACK/build/CMakeFiles 0
 .PHONY : CMakeFiles/producer.dir/rule
@@ -109,12 +109,12 @@ CMakeFiles/producer.dir/clean:
 CMakeFiles/consumer.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/consumer.dir/build.make CMakeFiles/consumer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/consumer.dir/build.make CMakeFiles/consumer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/chauzz/Desktop/DACK/build/CMakeFiles --progress-num=1,2,3,4 "Built target consumer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/chauzz/Desktop/DACK/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target consumer"
 .PHONY : CMakeFiles/consumer.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/consumer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/chauzz/Desktop/DACK/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/chauzz/Desktop/DACK/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/consumer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/chauzz/Desktop/DACK/build/CMakeFiles 0
 .PHONY : CMakeFiles/consumer.dir/rule

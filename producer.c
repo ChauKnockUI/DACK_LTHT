@@ -6,12 +6,17 @@
 #include "fifo_ipc.h"
 #include "sync_control.h"
 #include <time.h>
+#include "statistics.h"
 
 int fifo_fd;
 
 void send_message(const char *message) {
+    double start_time = get_current_time();
     write(fifo_fd, message, strlen(message) + 1);
     wait_ack();
+    double end_time = get_current_time();
+    record_message_timing("TEXT", end_time - start_time);
+    log_message(message, "SENT");
 }
 
 void send_file(const char *file_path) {
@@ -149,6 +154,7 @@ int main() {
                 send_message("END");
                 signal_sync();
                 wait_ack();
+                print_statistics();
                 break;
             default:
                 printf("Invalid choice. Please try again.\n");

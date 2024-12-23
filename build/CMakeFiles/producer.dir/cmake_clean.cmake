@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/producer.dir/fifo_ipc.c.o.d"
   "CMakeFiles/producer.dir/producer.c.o"
   "CMakeFiles/producer.dir/producer.c.o.d"
+  "CMakeFiles/producer.dir/statistics.c.o"
+  "CMakeFiles/producer.dir/statistics.c.o.d"
   "CMakeFiles/producer.dir/sync_control.c.o"
   "CMakeFiles/producer.dir/sync_control.c.o.d"
   "producer"

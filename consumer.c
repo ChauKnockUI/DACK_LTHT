@@ -4,20 +4,28 @@
 #include <fcntl.h>
 #include <string.h>
 #include "fifo_ipc.h"
-#include "sync_control.h"  // Thêm đồng bộ semaphore
+#include "sync_control.h"
+#include "statistics.h"
 
-int fifo_fd;  // Biến toàn cục lưu descriptor của FIFO
+int fifo_fd;
 
 void handle_text(const char *text) {
     printf("Received Text: %s\n", text);
+    log_message(text, "RECEIVED");
 }
 
 void handle_int(int value) {
     printf("Received Integer: %d\n", value);
+    char message[64];
+    snprintf(message, sizeof(message), "%d", value);
+    log_message(message, "RECEIVED");
 }
 
 void handle_float(float value) {
     printf("Received Float: %.2f\n", value);
+    char message[64];
+    snprintf(message, sizeof(message), "%.2f", value);
+    log_message(message, "RECEIVED");
 }
 
 void handle_file_data(const char *data) {
@@ -26,9 +34,10 @@ void handle_file_data(const char *data) {
         perror("Failed to open file for writing");
         return;
     }
-   // printf("Received File: %s\n",data);
+    printf("Received File\n");
     fwrite(data, 1, strlen(data), file);
     fclose(file);
+    log_message("/home/chauzz/Desktop/DACK/received_file.txt", "RECEIVED");
 }
 
 void process_message(const char *message) {

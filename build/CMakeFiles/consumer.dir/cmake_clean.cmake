@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/consumer.dir/consumer.c.o.d"
   "CMakeFiles/consumer.dir/fifo_ipc.c.o"
   "CMakeFiles/consumer.dir/fifo_ipc.c.o.d"
+  "CMakeFiles/consumer.dir/statistics.c.o"
+  "CMakeFiles/consumer.dir/statistics.c.o.d"
   "CMakeFiles/consumer.dir/sync_control.c.o"
   "CMakeFiles/consumer.dir/sync_control.c.o.d"
   "consumer"

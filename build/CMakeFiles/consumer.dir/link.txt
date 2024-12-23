@@ -1,1 +1,1 @@
-/usr/bin/cc CMakeFiles/consumer.dir/consumer.c.o CMakeFiles/consumer.dir/fifo_ipc.c.o CMakeFiles/consumer.dir/sync_control.c.o -o consumer 
+/usr/bin/cc CMakeFiles/consumer.dir/consumer.c.o CMakeFiles/consumer.dir/fifo_ipc.c.o CMakeFiles/consumer.dir/sync_control.c.o CMakeFiles/consumer.dir/statistics.c.o -o consumer  -lpthread 

@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/chauzz/Desktop/DACK/consumer.c" "CMakeFiles/consumer.dir/consumer.c.o" "gcc" "CMakeFiles/consumer.dir/consumer.c.o.d"
   "/home/chauzz/Desktop/DACK/fifo_ipc.c" "CMakeFiles/consumer.dir/fifo_ipc.c.o" "gcc" "CMakeFiles/consumer.dir/fifo_ipc.c.o.d"
+  "/home/chauzz/Desktop/DACK/statistics.c" "CMakeFiles/consumer.dir/statistics.c.o" "gcc" "CMakeFiles/consumer.dir/statistics.c.o.d"
   "/home/chauzz/Desktop/DACK/sync_control.c" "CMakeFiles/consumer.dir/sync_control.c.o" "gcc" "CMakeFiles/consumer.dir/sync_control.c.o.d"
   )
 

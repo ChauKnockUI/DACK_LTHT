@@ -217,6 +217,33 @@ producer.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/producer.dir/build.make CMakeFiles/producer.dir/producer.c.s
 .PHONY : producer.c.s
 
+statistics.o: statistics.c.o
+.PHONY : statistics.o
+
+# target to build an object file
+statistics.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/producer.dir/build.make CMakeFiles/producer.dir/statistics.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/consumer.dir/build.make CMakeFiles/consumer.dir/statistics.c.o
+.PHONY : statistics.c.o
+
+statistics.i: statistics.c.i
+.PHONY : statistics.i
+
+# target to preprocess a source file
+statistics.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/producer.dir/build.make CMakeFiles/producer.dir/statistics.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/consumer.dir/build.make CMakeFiles/consumer.dir/statistics.c.i
+.PHONY : statistics.c.i
+
+statistics.s: statistics.c.s
+.PHONY : statistics.s
+
+# target to generate assembly for a file
+statistics.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/producer.dir/build.make CMakeFiles/producer.dir/statistics.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/consumer.dir/build.make CMakeFiles/consumer.dir/statistics.c.s
+.PHONY : statistics.c.s
+
 sync_control.o: sync_control.c.o
 .PHONY : sync_control.o
 
@@ -263,6 +290,9 @@ help:
 	@echo "... producer.o"
 	@echo "... producer.i"
 	@echo "... producer.s"
+	@echo "... statistics.o"
+	@echo "... statistics.i"
+	@echo "... statistics.s"
 	@echo "... sync_control.o"
 	@echo "... sync_control.i"
 	@echo "... sync_control.s"

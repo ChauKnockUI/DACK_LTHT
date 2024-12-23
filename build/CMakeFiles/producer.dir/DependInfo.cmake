@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/chauzz/Desktop/DACK/fifo_ipc.c" "CMakeFiles/producer.dir/fifo_ipc.c.o" "gcc" "CMakeFiles/producer.dir/fifo_ipc.c.o.d"
   "/home/chauzz/Desktop/DACK/producer.c" "CMakeFiles/producer.dir/producer.c.o" "gcc" "CMakeFiles/producer.dir/producer.c.o.d"
+  "/home/chauzz/Desktop/DACK/statistics.c" "CMakeFiles/producer.dir/statistics.c.o" "gcc" "CMakeFiles/producer.dir/statistics.c.o.d"
   "/home/chauzz/Desktop/DACK/sync_control.c" "CMakeFiles/producer.dir/sync_control.c.o" "gcc" "CMakeFiles/producer.dir/sync_control.c.o.d"
   )
 
