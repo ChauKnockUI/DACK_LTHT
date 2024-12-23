@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/trnghuy-bru/Desktop/DACK_LTHT
+C_INCLUDES = -I/home/chauzz/Desktop/DACK
 
 C_FLAGS = 
 

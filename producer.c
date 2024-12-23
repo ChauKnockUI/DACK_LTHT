@@ -4,14 +4,14 @@
 #include <fcntl.h>
 #include <string.h>
 #include "fifo_ipc.h"
-#include "sync_control.h"  // Thêm đồng bộ semaphore
+#include "sync_control.h"
 #include <time.h>
 
-int fifo_fd;  // Biến toàn cục lưu descriptor của FIFO
+int fifo_fd;
 
 void send_message(const char *message) {
     write(fifo_fd, message, strlen(message) + 1);
-    wait_ack(); 
+    wait_ack();
 }
 
 void send_file(const char *file_path) {
@@ -31,34 +31,90 @@ void send_file(const char *file_path) {
             fclose(file);
             return;
         }
-        signal_sync();  // Gửi tín hiệu tới Consumer
-        wait_ack();   // Chờ tín hiệu ACK từ Consumer
+        signal_sync();
+        wait_ack();
         printf("Producer: Sent %zu bytes\n", bytes_read);
     }
     fclose(file);
 
-    // Gửi cờ EOF riêng biệt
     const char *eof_marker = "EOF";
     write(fifo_fd, eof_marker, strlen(eof_marker) + 1);
-    signal_sync();  // Gửi tín hiệu tới Consumer
-    wait_ack(); 
+    signal_sync();
+    wait_ack();
     printf("Producer: Sent EOF marker\n");
 }
 
+void send_text_message() {
+    char text[256];
+    printf("Enter text message: ");
+    getchar(); // Clear newline
+    fgets(text, sizeof(text), stdin);
+    text[strcspn(text, "\n")] = 0; // Remove newline
 
+    char formatted_message[512];
+    snprintf(formatted_message, sizeof(formatted_message), "TEXT|%s", text);
+    
+    send_message(formatted_message);
+    signal_sync();
+    printf("Producer: Sent text message and signaled Consumer\n");
+}
 
+void send_integer_message() {
+    int number;
+    printf("Enter integer number: ");
+    while (scanf("%d", &number) != 1) {
+        printf("Invalid input. Please enter an integer: ");
+        while (getchar() != '\n'); // Clear input buffer
+    }
 
+    char formatted_message[64];
+    snprintf(formatted_message, sizeof(formatted_message), "INT|%d", number);
+    
+    send_message(formatted_message);
+    signal_sync();
+    printf("Producer: Sent integer message and signaled Consumer\n");
+}
 
+void send_float_message() {
+    float number;
+    printf("Enter float number: ");
+    while (scanf("%f", &number) != 1) {
+        printf("Invalid input. Please enter a float: ");
+        while (getchar() != '\n'); // Clear input buffer
+    }
+
+    char formatted_message[64];
+    snprintf(formatted_message, sizeof(formatted_message), "FLOAT|%f", number);
+    
+    send_message(formatted_message);
+    signal_sync();
+    printf("Producer: Sent float message and signaled Consumer\n");
+}
+
+void send_file_message() {
+    char file_path[256];
+    printf("Enter file path: ");
+    getchar(); // Clear newline
+    fgets(file_path, sizeof(file_path), stdin);
+    file_path[strcspn(file_path, "\n")] = 0; // Remove newline
+
+    send_file(file_path);
+}
+
+void display_menu() {
+    printf("\n=== Producer Menu ===\n");
+    printf("1. Send Text Message\n");
+    printf("2. Send Integer Number\n");
+    printf("3. Send Float Number\n");
+    printf("4. Send File\n");
+    printf("5. Exit\n");
+    printf("Enter your choice (1-5): ");
+}
 
 int main() {
     const char *fifo_name = "/tmp/my_fifo";
-    const char *messages[] = {
-        "TEXT|Hello, this is a text message!",
-        "INT|42",
-        "FLOAT|3.14"
-    };
 
-    init_sync();  // Khởi tạo semaphore
+    init_sync();
     create_fifo(fifo_name);
 
     fifo_fd = open(fifo_name, O_WRONLY);
@@ -67,24 +123,39 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
-    for (int i = 0; i < 3; i++) {
-        send_message(messages[i]);
-        signal_sync();  // Báo hiệu Consumer xử lý
-        printf("Producer: Sent message and signaled Consumer\n");
-        sleep(2);
-    }
+    int choice;
+    do {
+        display_menu();
+        while (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter a number (1-5): ");
+            while (getchar() != '\n'); // Clear input buffer
+        }
 
-    // Gửi một file
-    send_file("/home/trnghuy-bru/Desktop/DACK_LTHT/example.txt");
-        printf("Producer: Send file and signaled Consumer\n");
-
-    // Gửi tín hiệu kết thúc
-    send_message("END");
-    signal_sync();
-    wait_ack() ; // Đảm bảo Consumer nhận tín hiệu END
+        switch (choice) {
+            case 1:
+                send_text_message();
+                break;
+            case 2:
+                send_integer_message();
+                break;
+            case 3:
+                send_float_message();
+                break;
+            case 4:
+                send_file_message();
+                break;
+            case 5:
+                printf("Sending END signal to consumer...\n");
+                send_message("END");
+                signal_sync();
+                wait_ack();
+                break;
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    } while (choice != 5);
 
     close(fifo_fd);
-    cleanup_sync();  // Dọn dẹp semaphore
+    cleanup_sync();
     return 0;
 }
-

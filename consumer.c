@@ -21,7 +21,7 @@ void handle_float(float value) {
 }
 
 void handle_file_data(const char *data) {
-    FILE *file = fopen("/home/trnghuy-bru/Desktop/DACK_LTHT/received_file.txt", "a");
+    FILE *file = fopen("/home/chauzz/Desktop/DACK/received_file.txt", "a");
     if (!file) {
         perror("Failed to open file for writing");
         return;

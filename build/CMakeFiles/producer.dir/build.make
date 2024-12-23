@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/trnghuy-bru/Desktop/DACK_LTHT
+CMAKE_SOURCE_DIR = /home/chauzz/Desktop/DACK
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/trnghuy-bru/Desktop/DACK_LTHT/build
+CMAKE_BINARY_DIR = /home/chauzz/Desktop/DACK/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/producer.dir/depend.make
@@ -70,46 +70,46 @@ include CMakeFiles/producer.dir/progress.make
 include CMakeFiles/producer.dir/flags.make
 
 CMakeFiles/producer.dir/producer.c.o: CMakeFiles/producer.dir/flags.make
-CMakeFiles/producer.dir/producer.c.o: /home/trnghuy-bru/Desktop/DACK_LTHT/producer.c
+CMakeFiles/producer.dir/producer.c.o: /home/chauzz/Desktop/DACK/producer.c
 CMakeFiles/producer.dir/producer.c.o: CMakeFiles/producer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/trnghuy-bru/Desktop/DACK_LTHT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/producer.dir/producer.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/producer.dir/producer.c.o -MF CMakeFiles/producer.dir/producer.c.o.d -o CMakeFiles/producer.dir/producer.c.o -c /home/trnghuy-bru/Desktop/DACK_LTHT/producer.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chauzz/Desktop/DACK/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/producer.dir/producer.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/producer.dir/producer.c.o -MF CMakeFiles/producer.dir/producer.c.o.d -o CMakeFiles/producer.dir/producer.c.o -c /home/chauzz/Desktop/DACK/producer.c
 
 CMakeFiles/producer.dir/producer.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/producer.dir/producer.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/trnghuy-bru/Desktop/DACK_LTHT/producer.c > CMakeFiles/producer.dir/producer.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/chauzz/Desktop/DACK/producer.c > CMakeFiles/producer.dir/producer.c.i
 
 CMakeFiles/producer.dir/producer.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/producer.dir/producer.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/trnghuy-bru/Desktop/DACK_LTHT/producer.c -o CMakeFiles/producer.dir/producer.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/chauzz/Desktop/DACK/producer.c -o CMakeFiles/producer.dir/producer.c.s
 
 CMakeFiles/producer.dir/fifo_ipc.c.o: CMakeFiles/producer.dir/flags.make
-CMakeFiles/producer.dir/fifo_ipc.c.o: /home/trnghuy-bru/Desktop/DACK_LTHT/fifo_ipc.c
+CMakeFiles/producer.dir/fifo_ipc.c.o: /home/chauzz/Desktop/DACK/fifo_ipc.c
 CMakeFiles/producer.dir/fifo_ipc.c.o: CMakeFiles/producer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/trnghuy-bru/Desktop/DACK_LTHT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/producer.dir/fifo_ipc.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/producer.dir/fifo_ipc.c.o -MF CMakeFiles/producer.dir/fifo_ipc.c.o.d -o CMakeFiles/producer.dir/fifo_ipc.c.o -c /home/trnghuy-bru/Desktop/DACK_LTHT/fifo_ipc.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chauzz/Desktop/DACK/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/producer.dir/fifo_ipc.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/producer.dir/fifo_ipc.c.o -MF CMakeFiles/producer.dir/fifo_ipc.c.o.d -o CMakeFiles/producer.dir/fifo_ipc.c.o -c /home/chauzz/Desktop/DACK/fifo_ipc.c
 
 CMakeFiles/producer.dir/fifo_ipc.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/producer.dir/fifo_ipc.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/trnghuy-bru/Desktop/DACK_LTHT/fifo_ipc.c > CMakeFiles/producer.dir/fifo_ipc.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/chauzz/Desktop/DACK/fifo_ipc.c > CMakeFiles/producer.dir/fifo_ipc.c.i
 
 CMakeFiles/producer.dir/fifo_ipc.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/producer.dir/fifo_ipc.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/trnghuy-bru/Desktop/DACK_LTHT/fifo_ipc.c -o CMakeFiles/producer.dir/fifo_ipc.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/chauzz/Desktop/DACK/fifo_ipc.c -o CMakeFiles/producer.dir/fifo_ipc.c.s
 
 CMakeFiles/producer.dir/sync_control.c.o: CMakeFiles/producer.dir/flags.make
-CMakeFiles/producer.dir/sync_control.c.o: /home/trnghuy-bru/Desktop/DACK_LTHT/sync_control.c
+CMakeFiles/producer.dir/sync_control.c.o: /home/chauzz/Desktop/DACK/sync_control.c
 CMakeFiles/producer.dir/sync_control.c.o: CMakeFiles/producer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/trnghuy-bru/Desktop/DACK_LTHT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/producer.dir/sync_control.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/producer.dir/sync_control.c.o -MF CMakeFiles/producer.dir/sync_control.c.o.d -o CMakeFiles/producer.dir/sync_control.c.o -c /home/trnghuy-bru/Desktop/DACK_LTHT/sync_control.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chauzz/Desktop/DACK/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/producer.dir/sync_control.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/producer.dir/sync_control.c.o -MF CMakeFiles/producer.dir/sync_control.c.o.d -o CMakeFiles/producer.dir/sync_control.c.o -c /home/chauzz/Desktop/DACK/sync_control.c
 
 CMakeFiles/producer.dir/sync_control.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/producer.dir/sync_control.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/trnghuy-bru/Desktop/DACK_LTHT/sync_control.c > CMakeFiles/producer.dir/sync_control.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/chauzz/Desktop/DACK/sync_control.c > CMakeFiles/producer.dir/sync_control.c.i
 
 CMakeFiles/producer.dir/sync_control.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/producer.dir/sync_control.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/trnghuy-bru/Desktop/DACK_LTHT/sync_control.c -o CMakeFiles/producer.dir/sync_control.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/chauzz/Desktop/DACK/sync_control.c -o CMakeFiles/producer.dir/sync_control.c.s
 
 # Object files for target producer
 producer_OBJECTS = \
@@ -125,7 +125,7 @@ producer: CMakeFiles/producer.dir/fifo_ipc.c.o
 producer: CMakeFiles/producer.dir/sync_control.c.o
 producer: CMakeFiles/producer.dir/build.make
 producer: CMakeFiles/producer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/trnghuy-bru/Desktop/DACK_LTHT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable producer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/chauzz/Desktop/DACK/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable producer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/producer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -137,6 +137,6 @@ CMakeFiles/producer.dir/clean:
 .PHONY : CMakeFiles/producer.dir/clean
 
 CMakeFiles/producer.dir/depend:
-	cd /home/trnghuy-bru/Desktop/DACK_LTHT/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/trnghuy-bru/Desktop/DACK_LTHT /home/trnghuy-bru/Desktop/DACK_LTHT /home/trnghuy-bru/Desktop/DACK_LTHT/build /home/trnghuy-bru/Desktop/DACK_LTHT/build /home/trnghuy-bru/Desktop/DACK_LTHT/build/CMakeFiles/producer.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/chauzz/Desktop/DACK/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chauzz/Desktop/DACK /home/chauzz/Desktop/DACK /home/chauzz/Desktop/DACK/build /home/chauzz/Desktop/DACK/build /home/chauzz/Desktop/DACK/build/CMakeFiles/producer.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/producer.dir/depend
 
