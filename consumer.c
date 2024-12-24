@@ -29,7 +29,7 @@ void handle_float(float value) {
 }
 
 void handle_file_data(const char *data) {
-    FILE *file = fopen("/home/trnghuy-bru/Desktop/DACK_LTHT/received_file.txt", "a");
+    FILE *file = fopen("/home/chauzz/Desktop/DACK/received_file.txt", "a");
     if (!file) {
         perror("Failed to open file for writing");
         return;
@@ -37,7 +37,7 @@ void handle_file_data(const char *data) {
     printf("Received File\n");
     fwrite(data, 1, strlen(data), file);
     fclose(file);
-    log_message("/home/trnghuy-bru/Desktop/DACK_LTHT/received_file.txt", "RECEIVED");
+    log_message("/home/chauzz/Desktop/DACK/received_file.txt", "RECEIVED");
 }
 
 void process_message(const char *message) {
@@ -85,9 +85,6 @@ int main() {
         if (bytes_read > 0) {
             buffer[bytes_read] = '\0';  // Đảm bảo kết thúc chuỗi
             process_message(buffer);
-
-           // signal_sync();// gui ack
-     //       signal_ack(); 
         } else if (bytes_read == 0) {
             printf("No more data to read. Exiting...\n");
             break;

@@ -1,7 +1,7 @@
 CMakeFiles/producer.dir/sync_control.c.o: \
- /home/trnghuy-bru/Desktop/DACK_LTHT/sync_control.c \
- /usr/include/stdc-predef.h /usr/include/semaphore.h \
- /usr/include/features.h /usr/include/features-time64.h \
+ /home/chauzz/Desktop/DACK/sync_control.c /usr/include/stdc-predef.h \
+ /usr/include/semaphore.h /usr/include/features.h \
+ /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/bits/timesize.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \

@@ -37,8 +37,6 @@ void send_file(const char *file_path) {
             fclose(file);
             return;
         }
-        // signal_sync();
-        // doi ack
         printf("Producer: Sent %zu bytes\n", bytes_read);
         
     }
@@ -61,7 +59,6 @@ void send_text_message() {
     snprintf(formatted_message, sizeof(formatted_message), "TEXT|%s", text);
     
     send_message(formatted_message);
-    // doi ack
     printf("Producer: Sent text message and signaled Consumer\n");
 }
 

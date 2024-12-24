@@ -8,10 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/trnghuy-bru/Desktop/DACK_LTHT/fifo_ipc.c" "CMakeFiles/producer.dir/fifo_ipc.c.o" "gcc" "CMakeFiles/producer.dir/fifo_ipc.c.o.d"
-  "/home/trnghuy-bru/Desktop/DACK_LTHT/producer.c" "CMakeFiles/producer.dir/producer.c.o" "gcc" "CMakeFiles/producer.dir/producer.c.o.d"
-  "/home/trnghuy-bru/Desktop/DACK_LTHT/statistics.c" "CMakeFiles/producer.dir/statistics.c.o" "gcc" "CMakeFiles/producer.dir/statistics.c.o.d"
-  "/home/trnghuy-bru/Desktop/DACK_LTHT/sync_control.c" "CMakeFiles/producer.dir/sync_control.c.o" "gcc" "CMakeFiles/producer.dir/sync_control.c.o.d"
+  "/home/chauzz/Desktop/DACK/fifo_ipc.c" "CMakeFiles/producer.dir/fifo_ipc.c.o" "gcc" "CMakeFiles/producer.dir/fifo_ipc.c.o.d"
+  "/home/chauzz/Desktop/DACK/producer.c" "CMakeFiles/producer.dir/producer.c.o" "gcc" "CMakeFiles/producer.dir/producer.c.o.d"
+  "/home/chauzz/Desktop/DACK/statistics.c" "CMakeFiles/producer.dir/statistics.c.o" "gcc" "CMakeFiles/producer.dir/statistics.c.o.d"
+  "/home/chauzz/Desktop/DACK/sync_control.c" "CMakeFiles/producer.dir/sync_control.c.o" "gcc" "CMakeFiles/producer.dir/sync_control.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
