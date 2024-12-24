@@ -59,6 +59,7 @@ void process_message(const char *message) {
     } else if (strcmp(message, "END") == 0) {
         // Nếu nhận được END, dừng consumer
         printf("Received END signal. Exiting...\n");
+        signal_sync();
         cleanup_sync(); // Dọn dẹp semaphore
         close(fifo_fd); // Đóng FIFO
         exit(0);  // Thoát khỏi vòng lặp và kết thúc chương trình
